@@ -13,8 +13,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['appkey']) {
                     echo 'Testing..'
-                    echo '${SSH_AUTH_SOCK}'
-                    //sh 'docker build --ssh default=$SSH_AUTH_SOCK -t nginx .'
+                    sh 'docker build --ssh default=$SSH_AUTH_SOCK -t nginx .'
                 }
             }
         }
