@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'ls -a'
+                sh 'docker build -t test'
             }
         }
         stage('Deploy') {
