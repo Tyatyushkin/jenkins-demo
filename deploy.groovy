@@ -12,7 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'docker --version'
+                sh 'cd jenkins-dockerfile'
+                sh 'ls -a'
             }
         }
         stage('Deploy') {
