@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                sshagent(credentials: ['repo']) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'repo', passphraseVariable: '', usernameVariable: '')]) {
                     echo 'Clone repo'
-                    sh '''
-                        [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                        ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts
-                         '''
+                    //sh '''
+                    //    [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
+                    //    ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts
+                    //     '''
                     git([url: 'git@github.com:Tyatyushkin/jenkins-dockerfile.git', branch: 'main'])
 
                 }
