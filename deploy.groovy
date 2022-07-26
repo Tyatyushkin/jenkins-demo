@@ -9,17 +9,12 @@ pipeline {
 
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
                 sshagent(credentials: ['appkey']) {
-                    echo 'Testing..'
+                    echo 'Build docker image..'
                     sh 'docker build --ssh default=$SSH_AUTH_SOCK -t nginx .'
                 }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
