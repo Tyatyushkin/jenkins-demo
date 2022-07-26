@@ -14,7 +14,7 @@ pipeline {
                 sshagent(credentials: ['appkey']) {
                     echo 'Testing..'
                     echo '$SSH_AUTH_SOCK'
-                    sh 'docker build --version'
+                    sh 'docker --version'
                 }
             }
         }
