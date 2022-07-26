@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Clone repo') {
             steps {
-                echo 'Building..'
+                sshagent(credentials: ['repo']) {
+                    echo 'Clone repo'
+                    git([url: 'git@github.com:Tyatyushkin/jenkins-dockerfile.git', branch: 'main'])
+                }
             }
         }
         stage('Test') {
