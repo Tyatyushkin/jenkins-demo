@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 sshagent(credentials: ['appkey']) {
-                    echo 'Build docker image..'
+                    sayBuild()
 
                     sh 'DOCKER_BUILDKIT=1 docker build --ssh default=$SSH_AUTH_SOCK -t nginx .'
                 }
